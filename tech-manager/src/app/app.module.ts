@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './template/menu/menu.component';
 import { DataTableComponent } from './template/data-table/data-table.component';
-import { DataRowComponent } from './template/data-row/data-row.component';
 import { DataCellComponent } from './template/data-cell/data-cell.component';
 
 @NgModule({
@@ -13,7 +12,6 @@ import { DataCellComponent } from './template/data-cell/data-cell.component';
     AppComponent,
     MenuComponent,
     DataTableComponent,
-    DataRowComponent,
     DataCellComponent
   ],
   imports: [
