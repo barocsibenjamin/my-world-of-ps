@@ -7,12 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DataTableComponent implements OnInit {
   cols: {key: string, text: string}[] = [
-    {key: 'number', text: '#'},
+    {key: 'id', text: '#'},
+    {key: 'number', text: 'Number'},
     {key: 'name', text: 'Name'},
     {key: 'type', text: 'Type'},
     {key: 'room', text: 'Room'},
     {key: 'provider', text: 'Provider'}
   ];
+  
+  item: any = {
+      id: '1',
+      number: '1',
+      name: 'Dell',
+      type: 'laptop',
+      room: 'Storage',
+      provider: 'Barócsi Benjámim'
+  };
 
   constructor() { }
 

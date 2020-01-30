@@ -6,25 +6,29 @@
             <th>{{ cols[2].text }}</th>
             <th>{{ cols[3].text }}</th>
             <th>{{ cols[4].text }}</th>
+            <th>{{ cols[5].text }}</th>
             <th>action</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>
-                <app-data-cell></app-data-cell>
+                {{ item.number }}
             </td>
             <td>
-                <app-data-cell></app-data-cell>
+                <app-data-cell [cellValue]=item.number></app-data-cell>
             </td>
             <td>
-                <app-data-cell></app-data-cell>
+                <app-data-cell [cellValue]=item.name></app-data-cell>
             </td>
             <td>
-                <app-data-cell></app-data-cell>
+                <app-data-cell [cellValue]=item.type></app-data-cell>
             </td>
             <td>
-                <app-data-cell></app-data-cell>
+                <app-data-cell [cellValue]=item.room></app-data-cell>
+            </td>
+            <td>
+                <app-data-cell [cellValue]=item.provider></app-data-cell>
             </td>
             <td>
                 <div class="btn-group">
