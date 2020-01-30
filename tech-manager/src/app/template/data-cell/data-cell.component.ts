@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./data-cell.component.css']
 })
 export class DataCellComponent implements OnInit {
+  cellValue: string ="Barócsi Benjámin";
 
   constructor() { }
 
