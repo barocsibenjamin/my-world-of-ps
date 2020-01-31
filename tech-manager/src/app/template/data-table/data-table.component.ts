@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BaseService } from '../../service/base.service';
 
 @Component({
   selector: 'app-data-table',
@@ -14,19 +15,14 @@ export class DataTableComponent implements OnInit {
     {key: 'room', text: 'Room'},
     {key: 'provider', text: 'Provider'}
   ];
-  
-  item: any = {
-      id: '1',
-      number: '1',
-      name: 'Dell',
-      type: 'laptop',
-      room: 'Storage',
-      provider: 'Barócsi Benjámim'
-  };
+  item: any = {};
 
-  constructor() { }
+  constructor(
+    private baseService: BaseService
+  ) { }
 
   ngOnInit() {
+   this.item = this.baseService.getAll('items')[0];
   }
 
   onUpdate(event): void {

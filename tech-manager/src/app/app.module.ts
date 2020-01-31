@@ -10,8 +10,8 @@ import { DataCellComponent } from './template/data-cell/data-cell.component';
 @NgModule({
   declarations: [
     AppComponent,
-    DataTableComponent,
     DataCellComponent,
+    DataTableComponent,
     MenuComponent
   ],
   imports: [
