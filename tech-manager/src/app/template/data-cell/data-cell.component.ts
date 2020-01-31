@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DataCellComponent implements OnInit {
   @Input() cellValue;
+  @Input() col;
 
   constructor() { }
 

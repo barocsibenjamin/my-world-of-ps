@@ -6,12 +6,12 @@ import { Injectable } from '@angular/core';
 export class ConfigService {
   cols = {
     items: [
-      { key: 'id', text: '#' },
-      { key: 'number', text: 'Number' },
-      { key: 'name', text: 'Name' },
-      { key: 'type', text: 'Type' },
-      { key: 'room', text: 'Room' },
-      { key: 'provider', text: 'Provider' }
+      { key: 'id', text: '#', type: 'plain' },
+      { key: 'number', text: 'Number', type: 'number' },
+      { key: 'name', text: 'Name', type: 'text' },
+      { key: 'type', text: 'Type', type: 'text' },
+      { key: 'room', text: 'Room', type: 'text' },
+      { key: 'provider', text: 'Provider', type: 'text' }
     ]
   };
 
