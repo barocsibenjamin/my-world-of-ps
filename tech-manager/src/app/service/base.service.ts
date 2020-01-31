@@ -13,6 +13,22 @@ export class BaseService {
         type: 'laptop',
         room: 'Storage',
         provider: 'Barócsi Benjámim'
+      },
+      {
+        id: '2',
+        number: '1',
+        name: 'Hama',
+        type: 'mouse',
+        room: 'Storage',
+        provider: 'Barócsi Benjámim'
+      },
+      {
+        id: '3',
+        number: '1',
+        name: 'Technika',
+        type: 'bag',
+        room: 'Storage',
+        provider: 'Barócsi Benjámim'
       }
     ]
   };
