@@ -11,7 +11,7 @@ export class BaseService {
         number: '1',
         name: 'Dell',
         type: 'laptop',
-        room: 'Storage',
+        room: 'storage',
         provider: 'Barócsi Benjámim'
       },
       {
@@ -19,7 +19,7 @@ export class BaseService {
         number: '1',
         name: 'Hama',
         type: 'mouse',
-        room: 'Storage',
+        room: 'storage',
         provider: 'Barócsi Benjámim'
       },
       {
@@ -27,7 +27,7 @@ export class BaseService {
         number: '1',
         name: 'Technika',
         type: 'bag',
-        room: 'Storage',
+        room: 'storage',
         provider: 'Barócsi Benjámim'
       }
     ]
