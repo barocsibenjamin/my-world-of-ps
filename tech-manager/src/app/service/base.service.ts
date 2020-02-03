@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BaseService {
-  serverUrl: string = "http://localhost:3000/items";
+  serverUrl: string = "http://localhost:3000/";
 
   data = {
     items: [
@@ -35,9 +37,12 @@ export class BaseService {
     ]
   };
 
-  constructor() { }
+  constructor(
+    private httpClient: HttpClient
+  ) { }
 
-  getAll(dataType: string): any[] {
-    return this.data[dataType];
+  getAll(dataType: string): Observable<any> {
+    let url = `${this.serverUrl}${dataType}`;
+    return this.httpClient.get(url);
   }
 }
