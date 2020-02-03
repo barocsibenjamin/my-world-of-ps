@@ -1,10 +1,23 @@
-<div class="input-group mb-3">
-    <div class="input-group-prepend">
-        <span class="input-group-text">
-            <i class="fa fa-search" aria-hidden="true"></i>
-        </span>
+<div class="row">
+    <div class="col-3">
+        <select [(ngModel)]="phraseKey" class="form-control">
+            <option value="notset">Find all</option>
+            <option *ngFor="let col of cols" [value]="col.key">
+                {{ col.text }}
+            </option>
+        </select
+        >
     </div>
-    <input type="text" class="form-control" placeholder="Search" [(ngModel)]="phraseString">
+    <div class="col-9">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </span>
+            </div>
+            <input type="text" class="form-control" placeholder="Search" [(ngModel)]="phraseString">
+        </div>
+    </div>
 </div>
 
 <table class="table table-striped">
@@ -20,7 +33,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let row of list | objectArray:phraseString">
+        <tr *ngFor="let row of list | objectArray:phraseString:phraseKey">
             <td *ngFor="let col of cols">
                 <app-data-cell [cellValue]="row[col.key]" [col]="col"></app-data-cell>
             </td>
