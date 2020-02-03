@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './template/menu/menu.component';
 import { DataTableComponent } from './template/data-table/data-table.component';
 import { DataCellComponent } from './template/data-cell/data-cell.component';
+import { ObjectArrayPipe } from './pipe/object-array.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     DataCellComponent,
     DataTableComponent,
-    MenuComponent
+    MenuComponent,
+    ObjectArrayPipe
   ],
   imports: [
     AppRoutingModule,
