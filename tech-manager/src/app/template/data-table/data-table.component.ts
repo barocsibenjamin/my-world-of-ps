@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { BaseService } from '../../service/base.service';
 
 @Component({
@@ -10,7 +10,12 @@ export class DataTableComponent implements OnInit {
   @Input() list: any[];
   @Input() cols: any[];
 
+  @Output() create: EventEmitter<any> = new EventEmitter();
+  @Output() update: EventEmitter<any> = new EventEmitter();
+  @Output() delete: EventEmitter<any> = new EventEmitter();
+
   phraseKey: string = 'notset';
+  newRow: any = {};
 
   constructor(
     private baseService: BaseService
@@ -19,12 +24,21 @@ export class DataTableComponent implements OnInit {
   ngOnInit() {
   }
 
-  onUpdate(event): void {
-    alert(`Clicked on ${event} button.`)
+  onCreate(row): void {
+    if (confirm("Biztos vagy benne, hogy hozzáadod?")) {
+    this.create.emit(row);
+    }
   }
 
-  onDelete(event): void {
-    alert(`Clicked on ${event} button.`)
+  onUpdate(row): void {
+    if (confirm("Biztos vagy benne, hogy módosítod?")) {
+    this.update.emit(row);
   }
+}
 
+  onDelete(row): void {
+    if (confirm("Biztos vagy benne, hogy törlöd?")) {
+    this.delete.emit(row);
+    }
+  }
 }

@@ -34,4 +34,16 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     this.listSubscription.unsubscribe();
   }
+
+  onCreate(row: any): void {
+    this.baseService.create('items', row);
+  }
+
+  onUpdate(row: any): void {
+    this.baseService.update('items', row);
+  }
+
+  onDelete(row: any): void {
+    this.baseService.delete('items', row);
+  }
 }

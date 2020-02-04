@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./data-cell.component.css']
 })
 export class DataCellComponent implements OnInit {
-  @Input() cellValue;
+  @Input() row;
   @Input() col;
 
   constructor() { }
