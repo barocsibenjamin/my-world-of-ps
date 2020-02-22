@@ -1,16 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BaseService } from './service/base.service';
 import { ConfigService } from './service/config.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'Tech Manager';
   item: any = {};
   cols: any = [];
+  listSubscription: Subscription;
 
   constructor(
     private baseService: BaseService,
@@ -20,7 +22,28 @@ export class AppComponent {
   }
 
   ngOnInit(){
-    this.item = this.baseService.getAll('items');
     this.cols = this.configService.cols.items;
+    this.listSubscription =
+     this.baseService.getAll('items').subscribe(
+       list => this.item = list,
+       err => console.error(err),
+       () => console.log('unsubscribed')
+     )
+  }
+
+  ngOnDestroy(){
+    this.listSubscription.unsubscribe();
+  }
+
+  onCreate(row: any): void {
+    this.baseService.create('items', row);
+  }
+
+  onUpdate(row: any): void {
+    this.baseService.update('items', row);
+  }
+
+  onDelete(row: any): void {
+    this.baseService.delete('items', row);
   }
 }

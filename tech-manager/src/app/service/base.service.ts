@@ -1,41 +1,48 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BaseService {
-  data = {
-    items: [
-      {
-        id: '1',
-        number: '1',
-        name: 'Dell',
-        type: 'laptop',
-        room: 'storage',
-        provider: 'Barócsi Benjámim'
-      },
-      {
-        id: '2',
-        number: '1',
-        name: 'Hama',
-        type: 'mouse',
-        room: 'storage',
-        provider: 'Barócsi Benjámim'
-      },
-      {
-        id: '3',
-        number: '1',
-        name: 'Technika',
-        type: 'bag',
-        room: 'storage',
-        provider: 'Barócsi Benjámim'
-      }
-    ]
-  };
+  serverUrl: string = "http://localhost:3000/";
+  observables: any = {};
 
-  constructor() { }
+  constructor(
+    private httpClient: HttpClient
+  ) { }
 
-  getAll(dataType: string): any[] {
-    return this.data[dataType];
+  getAll(dataType: string): Observable<any> {
+    let url = `${this.serverUrl}${dataType}`;
+    
+    if (!this.observables[dataType]){
+      this.observables[dataType] = new Subject();
+    }
+
+    this.httpClient.get(url).forEach(
+      data => this.observables[dataType].next(data)
+    );
+
+    return this.observables[dataType];
+  }
+  
+  create(dataType: string, row: any): void {
+    let url = `${this.serverUrl}${dataType}`;
+    this.httpClient.post(url, row)
+    .forEach( response => this.getAll(dataType) );
+  }
+
+  update(dataType: string, row: any): void {
+    let url = `${this.serverUrl}${dataType}/${row.id}`;
+    this.httpClient.put(url, row)
+    .forEach( response => this.getAll(dataType) );
+  }
+
+  delete(dataType: string, row: any): void {
+    let url = `${this.serverUrl}${dataType}/${row.id}`;
+    this.httpClient.delete(url)
+    .forEach( response => this.getAll(dataType) );
   }
 }
+  
